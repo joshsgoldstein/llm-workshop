@@ -1,4 +1,4 @@
-include ../../setup/.env
+include .env
 SELDON_NAMESPACE?=$(SELDON_NAMESPACE)
 
 
