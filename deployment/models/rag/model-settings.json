@@ -1,0 +1,15 @@
+{
+  "name": "rag",
+  "implementation": "mlserver_llm_api.LLMRuntime",
+  "parameters": {
+    "uri": "./rag.txt",
+    "extra": {
+      "provider_id": "openai",
+      "with_prompt_template": true,
+      "config": {
+        "model_id": "gpt-3.5-turbo",
+        "model_type": "chat.completions"
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+apiVersion: mlops.seldon.io/v1alpha1
+kind: Model
+metadata:
+  name: rag-combine-question
+spec:
+  storageUri: "gs://josh-seldon/llm/new-rag/memory"
+  requirements:
+  - memory
+---
+apiVersion: mlops.seldon.io/v1alpha1
+kind: Model
+metadata:
+  name: rag-combine-answer
+spec:
+  storageUri: "gs://josh-seldon/llm/new-rag/memory"
+  requirements:
+  - memory
+---
+apiVersion: mlops.seldon.io/v1alpha1
+kind: Model
+metadata:
+  name: embed
+spec:
+  storageUri: "gs://josh-seldon/llm/new-rag/embed"
+  requirements:
+  - openai
+---
+apiVersion: mlops.seldon.io/v1alpha1
+kind: Model
+metadata:
+  name: rag
+spec:
+  storageUri: "gs://josh-seldon/llm/new-rag/rag"
+  requirements:
+  - openai
+---
+apiVersion: mlops.seldon.io/v1alpha1
+kind: Model
+metadata:
+  name: vdb
+spec:
+  storageUri: "gs://josh-seldon/llm/new-rag/vdb"
+  requirements:
+  - mlserver

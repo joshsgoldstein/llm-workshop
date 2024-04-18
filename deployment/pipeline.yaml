@@ -1,0 +1,40 @@
+apiVersion: mlops.seldon.io/v1alpha1
+kind: Pipeline
+metadata:
+  name: rag-seldon-core-v2
+spec:
+  steps:
+    - name: rag-combine-question
+      inputs:
+      - rag-seldon-core-v2.inputs.memory_id
+      - rag-seldon-core-v2.inputs.role
+      - rag-seldon-core-v2.inputs.content
+    - name: embed
+      inputs:
+      - rag-seldon-core-v2
+      tensorMap:
+        rag-seldon-core-v2.inputs.content: input
+    - name: vdb
+      inputs:
+      - embed
+    - name: rag
+      inputs:
+      - rag-seldon-core-v2
+      - vdb
+      - rag-combine-question
+      tensorMap:
+        rag-seldon-core-v2.inputs.content: question
+        vdb.outputs.context: context
+        rag-combine-question.outputs.content: history
+        rag-combine-question.outputs.role: roles
+    - name: rag-combine-answer
+      inputs:
+      - rag-seldon-core-v2.inputs.memory_id
+      - rag.outputs.role
+      - rag.outputs.content
+  output:
+    steps:
+    - rag
+    # - vdb
+    # - embed
+    - rag-combine-answer
