@@ -1,7 +1,7 @@
 apiVersion: mlops.seldon.io/v1alpha1
 kind: Model
 metadata:
-  name: rag-combine-question
+  name: laszlo-rag-combine-question
 spec:
   storageUri: "gs://josh-seldon/llm/new-rag/memory"
   requirements:
@@ -10,7 +10,7 @@ spec:
 apiVersion: mlops.seldon.io/v1alpha1
 kind: Model
 metadata:
-  name: rag-combine-answer
+  name: laszlo-rag-combine-answer
 spec:
   storageUri: "gs://josh-seldon/llm/new-rag/memory"
   requirements:
@@ -19,7 +19,7 @@ spec:
 apiVersion: mlops.seldon.io/v1alpha1
 kind: Model
 metadata:
-  name: embed
+  name: laszlo-embed
 spec:
   storageUri: "gs://josh-seldon/llm/new-rag/embed"
   requirements:
@@ -28,7 +28,7 @@ spec:
 apiVersion: mlops.seldon.io/v1alpha1
 kind: Model
 metadata:
-  name: rag
+  name: laszlo-rag
 spec:
   storageUri: "gs://josh-seldon/llm/new-rag/rag"
   requirements:
@@ -37,7 +37,7 @@ spec:
 apiVersion: mlops.seldon.io/v1alpha1
 kind: Model
 metadata:
-  name: vdb
+  name: laszlo-vdb
 spec:
   storageUri: "gs://josh-seldon/llm/new-rag/vdb"
   requirements:
