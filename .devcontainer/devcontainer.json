@@ -2,6 +2,9 @@
     "name": "Python & Kubernetes Workshop",
     "build": {
         "dockerfile": "Dockerfile",
+        "args": {
+            "KUBECONFIG_DATA": "${{ secrets.KUBECONFIG_DATA }}"
+        },
         "context": ".."
     },
     "settings": { 
