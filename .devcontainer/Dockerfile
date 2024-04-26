@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y curl git apt-transport-https gnupg2 && 
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
 # Add Python dependencies including Jupyter
-COPY requirements.txt /workspace/
-RUN pip install --no-cache-dir -r requirements.txt
+# COPY requirements.txt /workspace/
+# RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install notebook ipykernel
 
 # Install kubectl
