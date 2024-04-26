@@ -5,9 +5,6 @@ WORKDIR /workspace
 # Install system dependencies
 RUN apt-get update && apt-get install -y curl git apt-transport-https gnupg2
 
-# Install Poetry - recommended method
-RUN curl -sSL https://install.python-poetry.org | python3 -
-
 # Install Python dependencies including Jupyter
 # Ensure you have a requirements.txt in your context if you uncomment the following lines
 # COPY requirements.txt /workspace/
