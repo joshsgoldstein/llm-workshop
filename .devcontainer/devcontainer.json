@@ -1,0 +1,17 @@
+{
+    "name": "Python & Kubernetes Workshop",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "settings": { 
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "forwardPorts": [8888],
+    "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-kubernetes-tools.vscode-kubernetes-tools"
+    ],
+    "postCreateCommand": "echo 'Environment setup complete!'"
+}
