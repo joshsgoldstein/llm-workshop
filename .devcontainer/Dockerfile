@@ -18,12 +18,6 @@ RUN apt-get install -y apt-transport-https gnupg2 curl && \
     apt-get update && \
     apt-get install -y kubectl
 
-# Install Helm
-RUN curl https://baltocdn.com/helm/signing.asc | apt-key add - && \
-    echo "deb https://baltocdn.com/helm/stable/debian/ all main" > /etc/apt/sources.list.d/helm-stable-debian.list && \
-    apt-get update && \
-    apt-get install -y helm
-
 # Setup the Kubernetes config
 ARG KUBECONFIG_DATA
 RUN echo "${KUBECONFIG_DATA}" | base64 --decode > /root/.kube/config
