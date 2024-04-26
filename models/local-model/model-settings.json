@@ -1,0 +1,21 @@
+{
+  "name": "gpt2",
+  "implementation": "mlserver_llm_local.runtime.Local",
+  "parameters": {
+    "uri": "gpt2",
+    "extra": {
+      "backend": "transformers",
+      "model": {
+        "enable_profile": "False",
+        "device": "cpu"
+      },
+      "prompt": {
+        "uri": "./prompt.jinja",
+        "enable": "True",
+        "tokens": {
+          "eos_token": "<|endoftext|>"
+        }
+      }
+    }
+  }
+}

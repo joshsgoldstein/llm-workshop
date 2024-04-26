@@ -1,0 +1,23 @@
+apiVersion: mlops.seldon.io/v1alpha1
+kind: Pipeline
+metadata:
+  name: local-chat-memory
+spec:
+  output:
+    steps:
+    - localgpt
+  steps:
+  - inputs:
+    - local-chat-memory.inputs.memory_id
+    - local-chat-memory.inputs.role
+    - local-chat-memory.inputs.content
+    name: combine-question
+  - inputs:
+    - combine-question.outputs.role
+    - combine-question.outputs.content
+    name: localgpt
+  - inputs:
+    - local-chat-memory.inputs.memory_id
+    - localgpt.outputs.role
+    - localgpt.outputs.content
+    name: combine-answer

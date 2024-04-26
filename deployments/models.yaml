@@ -1,0 +1,26 @@
+apiVersion: mlops.seldon.io/v1alpha1
+kind: Model
+metadata:
+  name: combine-question
+spec:
+  requirements:
+  - memory
+  storageUri: gs://josh-seldon/llm/chat-memory/josh-test/memory
+---
+apiVersion: mlops.seldon.io/v1alpha1
+kind: Model
+metadata:
+  name: combine-answer
+spec:
+  requirements:
+  - memory
+  storageUri: gs://josh-seldon/llm/chat-memory/josh-test/memory
+---
+apiVersion: mlops.seldon.io/v1alpha1
+kind: Model
+metadata:
+  name: localgpt
+spec:
+  requirements:
+  - llm-local
+  storageUri: gs://josh-seldon/llm/chat-memory/josh-test/local-model

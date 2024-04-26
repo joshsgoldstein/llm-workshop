@@ -1,8 +1,0 @@
-{
-    "name": "vdb",
-    "implementation": "runtime.SearchQdrant",
-    "parameters": {
-        "version": "v0.1.0",
-        "environment_tarball": "./state-env.tar.gz"
-    }
-}

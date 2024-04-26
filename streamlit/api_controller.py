@@ -8,8 +8,8 @@ class APIController():
     def __init__(self, session=None, target='chatgpt'):
         self.session = str(uuid.uuid4()) if not session else session
         print('using memory_id:', self.session, 'target:', target)
-        self.target = f'rag-seldon-core-v2'
-        self.endpoint = f"http://34.73.221.94/v2/models/{self.target}/infer"
+        self.target = f'{target}-chat-memory'
+        self.endpoint = f"http://{get_mesh_ip()}/v2/models/{self.target}/infer"
 
 
     def _build_request(self, question):
@@ -51,7 +51,6 @@ class APIController():
         async with aiohttp.ClientSession() as session:
             async with session.post(self.endpoint, json=inference_request, headers=headers) as response:
                 json = await response.json(content_type='text/plain')
-                print(json)
                 return json['outputs'][0]['data'][0]
             
     def sync_send(self, text):
@@ -61,6 +60,5 @@ class APIController():
         return values
     
     def unpack_response(self, response):
-        print(response.json())
         data = [output['data'] for output in response.json()['outputs'] if output['name'] == 'content']
         return data[0][0] if data else None

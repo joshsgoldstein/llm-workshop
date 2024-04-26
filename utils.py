@@ -3,7 +3,7 @@ import requests
 import dotenv
 import os
 
-dotenv.load_dotenv('../../setup/.env')
+dotenv.load_dotenv('.env')
 
 def get_mesh_ip():
     cmd = f"kubectl get svc seldon-mesh -n {os.environ['SELDON_NAMESPACE']} -o jsonpath='{{.status.loadBalancer.ingress[0].ip}}'"
